@@ -23,7 +23,7 @@ while keep_playing == "y":
 
 	# Computer chooses a random number
 	comp_number = random.randint(1, 100)
-	print(comp_number)
+	# print(comp_number)
 
 	# Player guess a number
 	player_guess = int(input("Choose a number: "))
@@ -44,7 +44,7 @@ while keep_playing == "y":
 		player_guess = int(input("Choose a number: "))
 
 	if player_guess == comp_number:
-		print("You have guessed the number")
+		print(f"You got it! The answer was {comp_number}.")
 	else:
 		print("You've run out of guesses.")
 		print(f"The correct number was: {comp_number}")
