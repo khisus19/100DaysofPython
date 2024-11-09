@@ -2,16 +2,16 @@ import random
 
 from art import logo
 
-print(logo)
-print("Welcome to the Number Guessing Game!")
-print("I'm thinking of a number between 1 and 100.")
+
 
 player_lives = 0
 
 keep_playing = "y"
 
 while keep_playing == "y":
-
+	print(logo)
+	print("Welcome to the Number Guessing Game!")
+	print("I'm thinking of a number between 1 and 100.")
 	difficulty = input("Choose a difficulty. Type 'e' for easy mode or 'h' for hard mode: ")
 
 	# Asssign the lives according to difficulty
@@ -30,10 +30,10 @@ while keep_playing == "y":
 
 	while player_guess != comp_number and player_lives > 0:
 		if player_guess > comp_number:
-			print("Too high")
+			print("Too high. Go 👇")
 			player_lives -= 1
 		else:
-			print("Too low")
+			print("Too low. Go 👆")
 			player_lives -= 1
 		
 		if player_lives == 0:
@@ -44,8 +44,8 @@ while keep_playing == "y":
 		player_guess = int(input("Choose a number: "))
 
 	if player_guess == comp_number:
-		print(f"You got it! The answer was {comp_number}.")
+		print(f"😁 You got it! The answer was {comp_number}.")
 	else:
-		print("You've run out of guesses.")
+		print("You've run out of guesses. 😭")
 		print(f"The correct number was: {comp_number}")
 	keep_playing = input("Do you want to keep playing. Type 'y' if so: ")
