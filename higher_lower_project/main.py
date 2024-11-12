@@ -23,19 +23,20 @@ def check_for_higher(p1, p2):
         return p1
     else:
         return p2
-        
+    
+ # Print logo and clear screen
+print(logo)        
 
 # Assign to the variables
 option_a = fetch_random_famous(option_a)
 option_b = fetch_random_famous(option_a)
 
-print(option_a)
-print(option_b)
-
 while not is_game_over:
 
     # Check which is higher and assign it to the variable
     higher_option = check_for_higher(option_a, option_b)
+
+   
 
     # Print the options
     print(f"Compare A: {option_a['name']}, a {option_a['description']}, from {option_a['country']}.")
@@ -54,11 +55,12 @@ while not is_game_over:
 
     if player_choice == correct_choice:
         current_score += 1
+        print("\n" * 20)
+        print(logo)
         print(f"You're right! Current score: {current_score}")
         option_a = option_b
         option_b = fetch_random_famous(option_a)
-        print(option_a)
-        print(option_b)
+
     else:
         print(f"Sorry that's wrong. Your final score is: {current_score}")
         is_game_over = True
@@ -66,6 +68,5 @@ while not is_game_over:
 
 
     # If is correct keep that option and assign to A
-
 
     # Get another random opt and assign to B. Check if is not the same
