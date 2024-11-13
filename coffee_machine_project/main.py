@@ -37,7 +37,8 @@ coin_values = {
     "penny": 0.01,
 }
 
-
+def calc_input_money(coin_1, coin_2, coin_3, coin_4):
+    return (coin_1 * 0.25) + (coin_2 * 0.1) + (coin_3 * 0.05) + (coin_4 * 0.01)
 
 
 # funcion que calcule el dinero que ingresó
