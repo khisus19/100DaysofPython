@@ -38,6 +38,8 @@ coin_values = {
     "penny": 0.01,
 }
 
+machine_on = True
+
 # Function to calculate money entered by usser
 def calc_input_money(coin_1, coin_2, coin_3, coin_4):
     '''Takes the quantity of each coin and returns the total value'''
@@ -46,40 +48,21 @@ def calc_input_money(coin_1, coin_2, coin_3, coin_4):
 
 # Function to check if the user has sufficient money to buy the chosen drink
 def is_sufficient_money(user_money, chosen_drink):
-    if user_money >= MENU[chosen_drink]["cost"]:
-        return True
-    else:
-        return False
+    return user_money >= MENU[chosen_drink]["cost"]
     
 # function to check if there is enough resources in inventory
 def is_sufficient_water(chosen_drink, resource_left):
-    if resource_left["water"] > MENU[chosen_drink]["ingredients"]["water"]:
-        return True
-    else:
-        return False
+    return resource_left["water"] > MENU[chosen_drink]["ingredients"]["water"]
 
 def is_sufficient_milk(chosen_drink, resource_left):
-    if resource_left["milk"] > MENU[chosen_drink]["ingredients"]["milk"]:
-        return True
-    else:
-        return False
+    return resource_left["milk"] > MENU[chosen_drink]["ingredients"]["milk"]
     
 def is_sufficient_coffee(chosen_drink, resource_left):
-    if resource_left["coffee"] > MENU[chosen_drink]["ingredients"]["coffee"]:
-        return True
-    else:
-        return False
+    return resource_left["coffee"] > MENU[chosen_drink]["ingredients"]["coffee"]
 
 
 def check_resources(chosen_drink, resource_left):
-    if not is_sufficient_water(chosen_drink, resource_left):
-        return "Sorry there is not enough water."
-    elif not is_sufficient_milk(chosen_drink, resource_left):
-        return "Sorry there is not enough milk."
-    elif not is_sufficient_coffee(chosen_drink, resource_left):
-        return "Sorry there is not enough coffee."
-    else:
-        return ""
+    return is_sufficient_water(chosen_drink, resource_left) and is_sufficient_milk(chosen_drink, resource_left) and is_sufficient_coffee(chosen_drink, resource_left)
 
 # Function to update the inventory if the purchase is succesful (substract resources and save the money)
 
@@ -96,8 +79,14 @@ def check_resources(chosen_drink, resource_left):
     Mostrar el output (cafe y cambio)
 '''
 
-def purchase():
+while machine_on:
     selected_drink = input("What would you like? (espresso/latte/cappuccino): ")
+
+    # Turn off the machine functionality
+    if selected_drink == "off":
+        break
+
+
     selected_drink = "latte"
     print("Please insert coins.")
     quaters = int(input("How many quaters?: "))
@@ -110,12 +99,14 @@ def purchase():
 
     if not is_sufficient_money(user_current_money, selected_drink):
         print("Sorry that's not enough money. Money refunded.")
-    else:
-        print("You Do have enough")
 
-    if (is_sufficient_water(selected_drink, resources) or is_sufficient_milk(selected_drink, resources) or is_sufficient_coffee(selected_drink, resources)):
-        print(check_resources(selected_drink, resources))
+    if not is_sufficient_water(selected_drink, resources):
+        print("Sorry there is not enough water.")
+    if not is_sufficient_milk(selected_drink, resources):
+        print("Sorry there is not enough milk.")
+    if not is_sufficient_coffee(selected_drink, resources):
+        print("Sorry there is not enough coffee.")
 
-    return "Hola"
 
-purchase()
+
+# TODO: Make sure the user types a correct input
