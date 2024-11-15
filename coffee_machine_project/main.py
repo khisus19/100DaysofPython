@@ -60,12 +60,16 @@ def is_sufficient_milk(chosen_drink, resource_left):
 def is_sufficient_coffee(chosen_drink, resource_left):
     return resource_left["coffee"] > MENU[chosen_drink]["ingredients"]["coffee"]
 
-
 def check_resources(chosen_drink, resource_left):
     return is_sufficient_water(chosen_drink, resource_left) and is_sufficient_milk(chosen_drink, resource_left) and is_sufficient_coffee(chosen_drink, resource_left)
 
 # Function to update the inventory if the purchase is succesful (substract resources and save the money)
-
+def update_inventory(chosen_drink, resource_left):
+    resource_left["water"] -= MENU[chosen_drink]["ingredients"]["water"]
+    resource_left["milk"] -= MENU[chosen_drink]["ingredients"]["milk"]
+    resource_left["coffee"] -= MENU[chosen_drink]["ingredients"]["coffee"]
+    resource_left["Money"] = MENU[chosen_drink]["cost"]
+    return resource_left
 
 # funcion que muestre el reporte de los recursos restantes y el dinero obtenido
 
@@ -108,6 +112,10 @@ while machine_on:
     if not is_sufficient_coffee(selected_drink, resources):
         print("Sorry there is not enough coffee.")
 
-    print(f"Here is ${user_change} in change.")
+    if check_resources(selected_drink, resources) and is_sufficient_money(user_current_money, selected_drink):
+        resources = update_inventory(selected_drink, resources)
+        print(resources)
+        print(f"Here is ${user_change} in change.")
+        print(f"Here is your {selected_drink} . Enjoy!")
 
 # TODO: Make sure the user types a correct input
