@@ -43,7 +43,7 @@ machine_on = True
 # Function to calculate money entered by usser
 def calc_input_money(coin_1, coin_2, coin_3, coin_4):
     '''Takes the quantity of each coin and returns the total value'''
-    return (coin_1 * 0.25) + (coin_2 * 0.1) + (coin_3 * 0.05) + (coin_4 * 0.01)
+    return round(((coin_1 * 0.25) + (coin_2 * 0.1) + (coin_3 * 0.05) + (coin_4 * 0.01)), 2)
 
 
 # Function to check if the user has sufficient money to buy the chosen drink
@@ -95,6 +95,7 @@ while machine_on:
     pennies = int(input("How many pennies?: "))
 
     user_current_money = calc_input_money(quaters, dimes, nickels, pennies)
+    user_change = round(user_current_money - MENU[selected_drink]['cost'], 2)
     print(user_current_money)
 
     if not is_sufficient_money(user_current_money, selected_drink):
@@ -107,6 +108,6 @@ while machine_on:
     if not is_sufficient_coffee(selected_drink, resources):
         print("Sorry there is not enough coffee.")
 
-
+    print(f"Here is ${user_change} in change.")
 
 # TODO: Make sure the user types a correct input
