@@ -98,6 +98,13 @@ def check_resources(chosen_drink, resource_left):
 def purchase():
     selected_drink = input("What would you like? (espresso/latte/cappuccino): ")
     selected_drink = "latte"
+    print("Please insert coins.")
+    quaters = int(input("How many quaters"))
+    dimes = int(input("How many dimes"))
+    nickels = int(input("How many nickels"))
+    pennies = int(input("How many pennies"))
+
+    
 
     if (is_sufficient_water(selected_drink, resources) or is_sufficient_milk(selected_drink, resources) or is_sufficient_coffee(selected_drink, resources)):
         print(check_resources(selected_drink, resources))
