@@ -54,8 +54,6 @@ def is_sufficient_milk(chosen_drink, resource_left):
 def is_sufficient_coffee(chosen_drink, resource_left):
     return resource_left["coffee"] >= MENU[chosen_drink]["ingredients"]["coffee"]
 
-def check_resources(chosen_drink, resource_left):
-    return is_sufficient_water(chosen_drink, resource_left) and is_sufficient_milk(chosen_drink, resource_left) and is_sufficient_coffee(chosen_drink, resource_left)
 
 # Function to update the inventory if the purchase is succesful (substract resources and save the money)
 def update_inventory(chosen_drink, resource_left):
