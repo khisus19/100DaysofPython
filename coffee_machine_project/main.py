@@ -68,10 +68,15 @@ def update_inventory(chosen_drink, resource_left):
     resource_left["water"] -= MENU[chosen_drink]["ingredients"]["water"]
     resource_left["milk"] -= MENU[chosen_drink]["ingredients"]["milk"]
     resource_left["coffee"] -= MENU[chosen_drink]["ingredients"]["coffee"]
-    resource_left["Money"] = MENU[chosen_drink]["cost"]
+    resource_left["money"] = MENU[chosen_drink]["cost"]
     return resource_left
 
-# funcion que muestre el reporte de los recursos restantes y el dinero obtenido
+# Function that shows the report with the inventory
+def show_report(resources_left):
+    print(f"Water: {resources_left['water']}")
+    print(f"Milk: {resources_left['milk']}")
+    print(f"Coffee: {resources_left['coffee']}")
+    print(f"Money: {resources_left['money']}")
 
 # funcion de compra
 ''' Debe preguntar qué bebida quiere
@@ -89,33 +94,36 @@ while machine_on:
     # Turn off the machine functionality
     if selected_drink == "off":
         break
+    # selected_drink = "latte"
 
+    if selected_drink in MENU.keys():
+        print("Please insert coins.")
+        quaters = int(input("How many quaters?: "))
+        dimes = int(input("How many dimes?: "))
+        nickels = int(input("How many nickels?: "))
+        pennies = int(input("How many pennies?: "))
 
-    selected_drink = "latte"
-    print("Please insert coins.")
-    quaters = int(input("How many quaters?: "))
-    dimes = int(input("How many dimes?: "))
-    nickels = int(input("How many nickels?: "))
-    pennies = int(input("How many pennies?: "))
+        user_current_money = calc_input_money(quaters, dimes, nickels, pennies)
+        user_change = round(user_current_money - MENU[selected_drink]['cost'], 2)
+        print(user_current_money)
 
-    user_current_money = calc_input_money(quaters, dimes, nickels, pennies)
-    user_change = round(user_current_money - MENU[selected_drink]['cost'], 2)
-    print(user_current_money)
+        if not is_sufficient_money(user_current_money, selected_drink):
+            print("Sorry that's not enough money. Money refunded.")
 
-    if not is_sufficient_money(user_current_money, selected_drink):
-        print("Sorry that's not enough money. Money refunded.")
+        if not is_sufficient_water(selected_drink, resources):
+            print("Sorry there is not enough water.")
+        elif not is_sufficient_milk(selected_drink, resources):
+            print("Sorry there is not enough milk.")
+        elif not is_sufficient_coffee(selected_drink, resources):
+            print("Sorry there is not enough coffee.")
 
-    if not is_sufficient_water(selected_drink, resources):
-        print("Sorry there is not enough water.")
-    if not is_sufficient_milk(selected_drink, resources):
-        print("Sorry there is not enough milk.")
-    if not is_sufficient_coffee(selected_drink, resources):
-        print("Sorry there is not enough coffee.")
+        if check_resources(selected_drink, resources) and is_sufficient_money(user_current_money, selected_drink):
+            resources = update_inventory(selected_drink, resources)
+            print(resources)
+            print(f"Here is ${user_change} in change.")
+            print(f"Here is your {selected_drink} . Enjoy!")
 
-    if check_resources(selected_drink, resources) and is_sufficient_money(user_current_money, selected_drink):
-        resources = update_inventory(selected_drink, resources)
-        print(resources)
-        print(f"Here is ${user_change} in change.")
-        print(f"Here is your {selected_drink} . Enjoy!")
+    else:
+        show_report(resources)
 
 # TODO: Make sure the user types a correct input
