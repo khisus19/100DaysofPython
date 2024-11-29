@@ -7,21 +7,18 @@ import turtle as t
 tim = t.Turtle()
 tim.speed(0)
 
-colors = colorgram.extract("./hirst_painting_project/hirst_1.webp", 20)
+# rgb_colors = []
+# colors = colorgram.extract("./hirst_painting_project/hirst_1.webp", 30)
 
-color_0 = tuple(colors[0].rgb)
-color_1 = tuple(colors[4].rgb)
-color_2 = tuple(colors[5].rgb)
-color_3 = tuple(colors[6].rgb)
-color_4 = tuple(colors[7].rgb)
-color_5 = tuple(colors[8].rgb)
-color_6 = tuple(colors[9].rgb)
-color_7 = tuple(colors[10].rgb)
-color_8 = tuple(colors[11].rgb)
-color_9 = tuple(colors[12].rgb)
-color_10 = tuple(colors[13].rgb)
+# for col in colors:
+#     r = col.rgb.r
+#     g = col.rgb.g
+#     b = col.rgb.b
+#     rgb_colors.append((r, g, b))
 
-list_of_colors = [color_0, color_1, color_2, color_3, color_4, color_5, color_6, color_7, color_8, color_9, color_10]
+# print(rgb_colors)
+
+list_of_colors = [(249, 248, 243), (234, 225, 83), (195, 8, 69), (231, 54, 132), (194, 164, 15), (112, 178, 214), (199, 77, 15), (216, 162, 101), (34, 187, 112), (29, 104, 167), (14, 23, 64), (20, 29, 168), (212, 136, 175), (231, 224, 7), (197, 34, 130), (15, 181, 210), (231, 167, 197), (126, 189, 163), (10, 48, 29), (40, 131, 75), (141, 217, 203), (61, 22, 10), (60, 13, 27), (108, 91, 210), (235, 64, 34), (131, 217, 230), (183, 17, 9)]
 
 t.colormode(255)
 
@@ -51,7 +48,7 @@ def complete_line():
         draw_spot()
         jump_right()
 
-for _ in range(3):
+for _ in range(8):
     complete_line()
     jump_up_and_back()
 
