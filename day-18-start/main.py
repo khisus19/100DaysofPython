@@ -1,8 +1,8 @@
 import random
 
-from turtle import Turtle, Screen
+import turtle as t
 
-tim = Turtle()
+tim = t.Turtle()
 tim.shape("turtle")
 
 colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "cyan", "magenta", "lime", "gold", "gray", "violet", "indigo", "turquoise", "maroon", "navy", "teal", "salmon", "coral", "khaki", "orchid", "plum", "tan"]
@@ -57,7 +57,11 @@ tim.pensize(10)
 directions = (0, 90, 180, 270)
 
 def change_pen_color():
-    tim.pencolor(random.choice(colors))
+    t.colormode(255)
+    r = random.randint(0,255)
+    g = random.randint(0,255)
+    b = random.randint(0,255)
+    tim.pencolor((r, g , b))
 
 def choose_direction():
     tim.setheading(random.choice(directions))
@@ -68,5 +72,5 @@ for _ in range(130):
     change_pen_color()
 
 
-screen = Screen()
+screen = t.Screen()
 screen.exitonclick()
