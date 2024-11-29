@@ -4,6 +4,8 @@ import turtle as t
 
 tim = t.Turtle()
 tim.shape("turtle")
+tim.speed(0)
+
 
 colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "brown", "cyan", "magenta", "lime", "gold", "gray", "violet", "indigo", "turquoise", "maroon", "navy", "teal", "salmon", "coral", "khaki", "orchid", "plum", "tan"]
 
@@ -51,10 +53,29 @@ colors = ["red", "blue", "green", "yellow", "orange", "purple", "pink", "brown",
 ###--------- Fourth challenge: --------###
 #            Random walk
 
-tim.speed(9)
-tim.pensize(10)
+# tim.pensize(10)
 
-directions = (0, 90, 180, 270)
+# directions = (0, 90, 180, 270)
+
+# def change_pen_color():
+#     t.colormode(255)
+#     r = random.randint(0,255)
+#     g = random.randint(0,255)
+#     b = random.randint(0,255)
+#     tim.pencolor((r, g , b))
+
+# def choose_direction():
+#     tim.setheading(random.choice(directions))
+
+# for _ in range(130):
+#     choose_direction()
+#     tim.forward(30)
+#     change_pen_color()
+
+
+
+###--------- Fifth challenge: --------###
+#            Draw a Spirograph
 
 def change_pen_color():
     t.colormode(255)
@@ -63,14 +84,16 @@ def change_pen_color():
     b = random.randint(0,255)
     tim.pencolor((r, g , b))
 
-def choose_direction():
-    tim.setheading(random.choice(directions))
+def draw_the_circle():
+    tim.circle(100)
 
-for _ in range(130):
-    choose_direction()
-    tim.forward(30)
+def change_angle():
+    tim.setheading(tim.heading() + 2)
+
+for angle in range(0, 180):
+    draw_the_circle()
+    change_angle()
     change_pen_color()
-
 
 screen = t.Screen()
 screen.exitonclick()
