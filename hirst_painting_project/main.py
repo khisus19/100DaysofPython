@@ -21,6 +21,8 @@ tim.speed(0)
 list_of_colors = [(249, 248, 243), (234, 225, 83), (195, 8, 69), (231, 54, 132), (194, 164, 15), (112, 178, 214), (199, 77, 15), (216, 162, 101), (34, 187, 112), (29, 104, 167), (14, 23, 64), (20, 29, 168), (212, 136, 175), (231, 224, 7), (197, 34, 130), (15, 181, 210), (231, 167, 197), (126, 189, 163), (10, 48, 29), (40, 131, 75), (141, 217, 203), (61, 22, 10), (60, 13, 27), (108, 91, 210), (235, 64, 34), (131, 217, 230), (183, 17, 9)]
 
 t.colormode(255)
+tim.up()
+tim.hideturtle()
 
 def draw_spot():
     tim.color(random.choice(list_of_colors))
@@ -29,26 +31,28 @@ def draw_spot():
     tim.end_fill()
 
 def jump_right():
-    tim.up()
     tim.forward(45)
-    tim.down()
 
 def jump_up_and_back():
-    tim.up()
     tim.left(90)
     tim.forward(45)
     tim.left(90)
     for _ in range(10):
         tim.forward(45)
     tim.right(180)
-    tim.down()
 
 def complete_line():
     for _ in range(10):
         draw_spot()
         jump_right()
 
-for _ in range(8):
+tim.setheading(180)
+tim.forward(202)
+tim.setheading(270)
+tim.forward(202)
+tim.setheading(0)
+
+for _ in range(10):
     complete_line()
     jump_up_and_back()
 
