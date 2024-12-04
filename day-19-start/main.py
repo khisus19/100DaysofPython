@@ -7,9 +7,15 @@ screen = t.Screen()
 screen.setup(width=500, height=400)
 user_bet = screen.textinput(title="Make your bet", prompt="Enter a color")
 
-#TODO: Maybe use a for loop to give the turtles their shape
-colors_list = ["purple", "blue", "green", "yellow", "orange", "red"]
+# Finish line drawing
+finish_line_pen = t.Turtle()
+finish_line_pen.hideturtle()
+finish_line_pen.penup()
+finish_line_pen.setposition(225, 100)
+finish_line_pen.pendown()
+finish_line_pen.setposition(225, -100)
 
+colors_list = ["purple", "blue", "green", "yellow", "orange", "red"]
 positions = [(-220, -75), (-220, -45), (-220, -15), (-220, 15), (-220, 45), (-220, 75)]
 
 turtle_list = []
@@ -33,7 +39,7 @@ while not is_game_over:
             winner_turtle = turtle.fillcolor()
             is_game_over = True
 
-print("You won") if user_bet == winner_turtle else print("You loose")
+print("You won") if user_bet == winner_turtle else print("You lost")
 print(f"The winner turtle was the {winner_turtle} one")
 
 screen.exitonclick()
