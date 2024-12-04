@@ -5,7 +5,7 @@ import turtle as t
 
 screen = t.Screen()
 screen.setup(width=500, height=400)
-# user_bet = screen.textinput(title="Make your bet", prompt="Enter a color")
+user_bet = screen.textinput(title="Make your bet", prompt="Enter a color")
 
 #TODO: Maybe use a for loop to give the turtles their shape
 colors_list = ["purple", "blue", "green", "yellow", "orange", "red"]
@@ -24,12 +24,16 @@ for index, color in enumerate(colors_list):
 
 is_game_over = False
 
+winner_turtle = ""
+
 while not is_game_over:
     for turtle in turtle_list:
         turtle.forward(random.randint(1,10))
         if turtle.xcor() >= 210:
-            print(turtle.xcor())
-            print(turtle.fillcolor())
+            winner_turtle = turtle.fillcolor()
             is_game_over = True
+
+print("You won") if user_bet == winner_turtle else print("You loose")
+print(f"The winner turtle was the {winner_turtle} one")
 
 screen.exitonclick()
