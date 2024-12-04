@@ -1,5 +1,6 @@
-import turtle as t
+import random
 
+import turtle as t
 
 
 screen = t.Screen()
@@ -17,15 +18,18 @@ for index, color in enumerate(colors_list):
     current_turtle = t.Turtle("turtle")
     current_turtle.penup()
     current_turtle.fillcolor(color)
+    current_turtle.speed(2)
     current_turtle.setposition(positions[index])
-    print(current_turtle.position())
     turtle_list.append(current_turtle)
 
+is_game_over = False
 
-
-
-#TODO: Change the order on which the turtles set in the starting position
-#TODO: Make the animation slower
-
+while not is_game_over:
+    for turtle in turtle_list:
+        turtle.forward(random.randint(1,10))
+        if turtle.xcor() >= 210:
+            print(turtle.xcor())
+            print(turtle.fillcolor())
+            is_game_over = True
 
 screen.exitonclick()
