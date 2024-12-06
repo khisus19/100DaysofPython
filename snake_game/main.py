@@ -5,6 +5,7 @@ import time
 
 from snake import Snake
 from food import Food
+from scoreboard import Scoreboard
 
 screen = t.Screen()
 screen.bgcolor("black")
@@ -14,13 +15,13 @@ screen.tracer(0)
 
 snake = Snake()
 food = Food()
+scoreboard = Scoreboard()
 
 screen.listen()
 screen.onkey(snake.up, "Up")
 screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
-screen.onkey(food.refresh, "m")
 
 is_game_over = False
 
@@ -32,7 +33,7 @@ while not is_game_over:
 
     #TODO: Detect collision with food
     if snake.head.distance(food) < 20:
-        print("Nom nom nom")
+        scoreboard.increase_score()
         food.refresh()
 
 
