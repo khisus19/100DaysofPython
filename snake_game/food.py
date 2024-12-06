@@ -2,17 +2,18 @@ import random
 
 import turtle as t
 
+POSSIBLE_COORDENATES = range(-280, 280, 20)
+
 class Food(t.Turtle):
     def __init__(self):
         super().__init__()
         self.shape("circle")
         self.penup()
         self.color("white")
-        xcor = random.randint(-280, 280)
-        ycor = random.randint(-280, 280)
-        self.goto(xcor, ycor)
+        self.speed("fastest")
+        self.refresh()
 
-    def change_location(self):
-        xcor = random.randint(-280, 280)
-        ycor = random.randint(-280, 280)
+    def refresh(self):
+        xcor = random.choice(POSSIBLE_COORDENATES)
+        ycor = random.choice(POSSIBLE_COORDENATES)
         self.goto(xcor, ycor)

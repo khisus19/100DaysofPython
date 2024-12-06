@@ -20,7 +20,7 @@ screen.onkey(snake.up, "Up")
 screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
 screen.onkey(snake.right, "Right")
-screen.onkey(food.change_location, "m")
+screen.onkey(food.refresh, "m")
 
 is_game_over = False
 
@@ -31,6 +31,9 @@ while not is_game_over:
     snake.move()
 
     #TODO: Detect collision with food
+    if snake.head.distance(food) < 20:
+        print("Nom nom nom")
+        food.refresh()
 
 
 screen.exitonclick()
