@@ -36,10 +36,11 @@ while not is_game_over:
     #TODO: Detect collision with food
     if snake.head.distance(food) < 10:
         scoreboard.increase_score()
+        snake.extend()
         food.refresh()
 
     #TODO: Detect collision with walls
-    if snake.head.xcor() > 305 or snake.head.xcor() < -305 or snake.head.ycor() > 280 or snake.head.ycor() < -305:
+    if snake.head.xcor() > 305 or snake.head.xcor() < -305 or snake.head.ycor() > 295 or snake.head.ycor() < -305:
         is_game_over = True
         scoreboard.game_over()
 
