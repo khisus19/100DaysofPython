@@ -1,7 +1,7 @@
 import turtle as t
 
-SCREEN_SIZE = 300
-WALL_LIMITS = SCREEN_SIZE - 20
+SCREEN_SIZE = 320
+WALL_LIMITS = SCREEN_SIZE - 10
 
 class Walls(t.Turtle):
     def __init__(self):
@@ -9,9 +9,9 @@ class Walls(t.Turtle):
         self.color("white")
         self.hideturtle()
         self.penup()
-        self.goto(- WALL_LIMITS, 270)
+        self.goto(- WALL_LIMITS, 290)
         self.pendown()
-        self.goto(WALL_LIMITS, 270)
+        self.goto(WALL_LIMITS, 290)
         self.goto(WALL_LIMITS, -WALL_LIMITS)
         self.goto(-WALL_LIMITS, -WALL_LIMITS)
-        self.goto(-WALL_LIMITS, 270)
+        self.goto(-WALL_LIMITS, 290)

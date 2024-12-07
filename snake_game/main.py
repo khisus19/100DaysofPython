@@ -10,7 +10,7 @@ from walls import Walls
 
 screen = t.Screen()
 screen.bgcolor("black")
-screen.setup(600, 600)
+screen.setup(640, 640)
 screen.title("Vibora")
 screen.tracer(0)
 
@@ -34,14 +34,15 @@ while not is_game_over:
     snake.move()
 
     #TODO: Detect collision with food
-    if snake.head.distance(food) < 20:
+    if snake.head.distance(food) < 10:
         scoreboard.increase_score()
         food.refresh()
 
     #TODO: Detect collision with walls
-    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 270 or snake.head.ycor() < -280:
+    if snake.head.xcor() > 305 or snake.head.xcor() < -305 or snake.head.ycor() > 280 or snake.head.ycor() < -305:
         is_game_over = True
+        scoreboard.game_over()
 
-print("Game Over")
+# print("Game Over")
 
 screen.exitonclick()
