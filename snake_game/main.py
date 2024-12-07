@@ -6,6 +6,7 @@ import time
 from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
+from walls import Walls
 
 screen = t.Screen()
 screen.bgcolor("black")
@@ -16,6 +17,7 @@ screen.tracer(0)
 snake = Snake()
 food = Food()
 scoreboard = Scoreboard()
+walls = Walls()
 
 screen.listen()
 screen.onkey(snake.up, "Up")
