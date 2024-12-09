@@ -1,28 +1,21 @@
 import turtle as t
 
-PADDLE_YCORDS = [30, 10, 0, -10, -30]
-RIGHT_SIDE_PADDLE = 350
-
 class Paddle(t.Turtle):
     def __init__(self, side):
         super().__init__()
-        self.side = side
-        self.paddle = {}
-        self.create_paddle()
-
-    def create_paddle(self):    
-        paddle = t.Turtle("square")
-        paddle.color("white")
-        paddle.shapesize(5, 1)
-        paddle.penup()
-        paddle.setpos(self.side, 0)
-        self.paddle = paddle
+        self.shape("square")
+        self.color("white")
+        self.shapesize(5, 1)
+        self.penup()
+        self.setpos(side, 0)
 
     def move_up(self):
-        self.paddle.sety(self.paddle.ycor() + 20)
+        new_y = self.ycor() + 20
+        self.goto(self.xcor(), new_y)
 
     
     def move_down(self):
-        self.paddle.sety(self.paddle.ycor() - 20)
+        new_y = self.ycor() - 20
+        self.goto(self.xcor(), new_y)
     
     
