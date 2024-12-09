@@ -21,15 +21,19 @@ walls = Walls()
 
 screen.listen()
 screen.onkey(snake.up, "Up")
+screen.onkey(snake.up, "w")
 screen.onkey(snake.down, "Down")
+screen.onkey(snake.down, "s")
 screen.onkey(snake.left, "Left")
+screen.onkey(snake.left, "a")
 screen.onkey(snake.right, "Right")
+screen.onkey(snake.right, "d")
 
 is_game_over = False
 
 while not is_game_over:
     screen.update()
-    time.sleep(0.3)
+    time.sleep(0.2)
     
     snake.move()
 
@@ -54,3 +58,4 @@ screen.exitonclick()
 
 # TODO: Food appears in a location diferent of the snake body
 # TODO: Press a key to increase snake speed
+# TODO: Press a key to start a new game
