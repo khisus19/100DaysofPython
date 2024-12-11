@@ -7,11 +7,17 @@ class Ball(t.Turtle):
         self.color("white")
         self.setheading(130)
         self.penup()
+        self.x_move = 10
+        self.y_move = 10
 
     def move(self):
-        if self.xcor() < 380 or self.xcor() > -380:
-            self.forward(10)
+        if self.xcor() <= 380 or self.xcor() >= -380:
+            new_x = self.xcor() + self.x_move
+            new_y = self.ycor() + self.y_move
+            self.goto(new_x, new_y)
 
     def bounce(self):
-        new_angle = 360 - self.heading()
-        self.setheading(new_angle)
+        self.y_move *= -1
+
+    def bounce_in_paddle(self):
+        self.x_move *= -1
