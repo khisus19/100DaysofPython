@@ -3,6 +3,7 @@ import time
 
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 
 screen = t.Screen()
 screen.setup(800, 600)
@@ -13,6 +14,7 @@ screen.tracer(0)
 r_paddle = Paddle(350)
 l_paddle = Paddle(-350)
 ball = Ball()
+scoreboard = Scoreboard()
 
 
 screen.listen()
@@ -38,8 +40,12 @@ while is_game_on:
 
     # Detect the ball going out
     if ball.xcor() > 380:
+        scoreboard.increase_score("p1")
+        scoreboard.update_scoreboard()
         ball.reset_position()
     elif ball.xcor() < -380:
+        scoreboard.increase_score("p2")
+        scoreboard.update_scoreboard()
         ball.reset_position()
     
 screen.exitonclick()
