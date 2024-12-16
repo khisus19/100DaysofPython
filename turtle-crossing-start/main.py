@@ -31,8 +31,9 @@ while game_is_on:
             game_is_on = False
 
 
-    # if player.ycor() >= 280:
-    #     # Increase game speed
-    #     pass
+    if player.ycor() >= 270:
+        # Increase game speed
+        player.reset_position()
+        scoreboard.level_up()
 
 screen.exitonclick()

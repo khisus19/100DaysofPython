@@ -14,5 +14,7 @@ class Scoreboard(t.Turtle):
         self.write(f"Level: {self.level}", False, "left", FONT)
 
     def level_up(self):
-        self.leve += 1
+        self.clear()
+        self.level += 1
+        self.write(f"Level: {self.level}", False, "left", FONT)
     pass
