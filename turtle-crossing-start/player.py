@@ -14,9 +14,8 @@ class Player(t.Turtle):
         self.penup()
         self.goto(STARTING_POSITION)
 
-    def move(self):
-        new_y = self.ycor() + MOVE_DISTANCE
-        self.goto(0, new_y)
+    def go_up(self):
+        self.forward(MOVE_DISTANCE)
         if self.ycor() == FINISH_LINE_Y:
             self.reset_position()
     
