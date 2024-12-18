@@ -36,5 +36,6 @@ while game_is_on:
         # Increase game speed
         player.reset_position()
         scoreboard.level_up()
+        car_manager.level_up()
 
 screen.exitonclick()
