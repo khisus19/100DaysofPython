@@ -1,5 +1,3 @@
-import random
-
 import turtle as t
 import time
 
@@ -45,14 +43,14 @@ while not is_game_over:
 
     # Detect collision with walls
     if snake.head.xcor() > 305 or snake.head.xcor() < -305 or snake.head.ycor() > 295 or snake.head.ycor() < -305:
-        is_game_over = True
-        scoreboard.game_over()
+        scoreboard.reset()
+        snake.reset_snake()
 
     # Detect collision with tail
     for segment in snake.segments_list[1:]:
         if snake.head.distance(segment) < 10:
-            is_game_over = True
-            scoreboard.game_over()
+            scoreboard.reset()
+            snake.reset_snake()
 
 screen.exitonclick()
 
