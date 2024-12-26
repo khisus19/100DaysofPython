@@ -52,14 +52,14 @@ data = pd.read_csv('./weather_data.csv')
 
 data = pd.read_csv("./2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
 
-grey_squirrel_list = data[data["Primary Fur Color"] == "Gray"]
-red_squirrel_list = data[data["Primary Fur Color"] == "Cinnamon"]
-black_squirrel_list = data[data["Primary Fur Color"] == "Black"]
+grey_squirrels_list = data[data["Primary Fur Color"] == "Gray"]
+red_squirrels_list = data[data["Primary Fur Color"] == "Cinnamon"]
+black_squirrels_list = data[data["Primary Fur Color"] == "Black"]
 
-squirrel_dict = {
+squirrels_dict = {
     "Fur Color": ["grey", "red", "black"],
-    "Count": [len(grey_squirrel_list), len(red_squirrel_list), len(black_squirrel_list)]
+    "Count": [len(grey_squirrels_list), len(red_squirrels_list), len(black_squirrels_list)]
 }
 
-squirrel_table = pd.DataFrame(squirrel_dict)
-squirrel_table.to_csv("squirrel_count.csv")
+squirrels_table = pd.DataFrame(squirrels_dict)
+squirrels_table.to_csv("squirrel_count.csv")
