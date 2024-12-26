@@ -38,15 +38,28 @@ data = pd.read_csv('./weather_data.csv')
 # print(monday_far_temp)
 
 
-# Create a DataFrame or a table from a dictionary
+# # Create a DataFrame or a table from a dictionary
 
-data_dict = {
-    "students": ["Amy", "James", "Angela"],
-    "scores": [76, 56, 65]
+# data_dict = {
+#     "students": ["Amy", "James", "Angela"],
+#     "scores": [76, 56, 65]
+# }
+
+# data = pd.DataFrame(data_dict)
+# data.to_csv("new_data.csv")
+
+# print(data)
+
+data = pd.read_csv("./2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
+
+grey_squirrel_list = data[data["Primary Fur Color"] == "Gray"]
+red_squirrel_list = data[data["Primary Fur Color"] == "Cinnamon"]
+black_squirrel_list = data[data["Primary Fur Color"] == "Black"]
+
+squirrel_dict = {
+    "Fur Color": ["grey", "red", "black"],
+    "Count": [len(grey_squirrel_list), len(red_squirrel_list), len(black_squirrel_list)]
 }
 
-data = pd.DataFrame(data_dict)
-
-data.to_csv("new_data.csv")
-
-print(data)
+squirrel_table = pd.DataFrame(squirrel_dict)
+squirrel_table.to_csv("squirrel_count.csv")
