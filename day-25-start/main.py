@@ -14,7 +14,17 @@
 
 import pandas as pd
 
-import pandas as pd
-
 data = pd.read_csv('./weather_data.csv')
-print(data["temp"])
+
+data_dict = data.to_dict()
+
+temp_list = data["temp"].to_list()
+
+# print(data_dict)
+
+# final_sum = sum(temp_list)
+# average_temp = final_sum / len(temp_list)
+
+average_temp = data["temp"].mean()
+
+print(average_temp)
