@@ -8,8 +8,10 @@ screen.title("USA States Games")
 image = "./blank_states_img.gif"
 
 screen.addshape(image)
-
 t.shape(image)
+
+# Position the Turtle graphics window to the left side of the screen
+screen.setup(width=800, height=600, startx=0, starty=0)
 
 # Read the data
 data = pd.read_csv("./50_states.csv")
