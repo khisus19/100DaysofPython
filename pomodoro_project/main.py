@@ -19,12 +19,17 @@ def reset_timer():
     canvas.itemconfig(timer_text, text="00:00")
     timer_label.config(text="Timer")
     check_marks_label.config(text="")
+    global reps
+    reps = 0
+    start_button.config(state=NORMAL)  # Enable the start button
 
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
 def start_timer():
     global reps
     reps += 1
+
+    start_button.config(state=DISABLED)  # Disable the start button
 
     work_sec = WORK_MIN * 60
     short_break_sec = SHORT_BREAK_MIN * 60
