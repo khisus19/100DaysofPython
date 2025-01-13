@@ -9,16 +9,18 @@ def save_password():
     username = username_input.get()
     password = password_input.get()
 
-    is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \nEmail: {username} \nPassword: {password} \nIs it ok to save?")
+    if len(website) == 0 or len(username) == 0:
+        messagebox.showwarning(title="Oops", message="Please don't leave any fields empty!")
+    else:
+        is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered: \nEmail: {username} \nPassword: {password} \nIs it ok to save?")
 
-    if is_ok:
+        if is_ok:
+            with open("./data.txt", "a") as file:
+                file.write(f"{website} || {username} || {password}\n")
 
-        with open("./data.txt", "a") as file:
-            file.write(f"{website} || {username} || {password}\n")
-
-        website_input.delete(0, "end")
-        password_input.delete(0, "end")
-        website_input.focus()
+            website_input.delete(0, "end")
+            password_input.delete(0, "end")
+            website_input.focus()
 
 
 # ---------------------------- UI SETUP ------------------------------- #
