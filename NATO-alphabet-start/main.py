@@ -28,7 +28,17 @@ phonetic_alphabet_dict = {row.letter:row.code for (index, row) in data.iterrows(
 
 
 #TODO 2. Create a list of the phonetic code words from a word that the user inputs.
-user_word = input("Write any word to translate to phonetic alphabet: ").upper()
 
-phonetic_result = [phonetic_alphabet_dict[letter] for letter in user_word]
-print(phonetic_result)
+while True:
+    
+    user_word = input("Write any word to translate to phonetic alphabet: ").upper()
+
+    try:
+        outputlist = [phonetic_alphabet_dict[letter] for letter in user_word]
+
+    except KeyError:
+        print("Sorry, only letters in the alphabet please.")
+        continue
+    else:
+        print(outputlist)
+        break
