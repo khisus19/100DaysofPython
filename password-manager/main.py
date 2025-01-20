@@ -46,24 +46,20 @@ def save_password():
             with open("./data.json", "r") as file:
                 # Reading old data
                 data = json.load(file)
-                
         except FileNotFoundError:
             with open("./data.json", "w") as file:
-                json.dump({}, file)
+                json.dump(new_data, file, indent=4)
+        else:
+            # Updating old data with new data
+            data.update(new_data)
         
-        finally:
-            with open("./data.json", "r") as file:
-                # Reading old data
-                data = json.load(file)
-                # Updating old data
-                data.update(new_data)
             with open("./data.json", "w") as file:
                 # Saving updated data
                 json.dump(data, file, indent=4)
-
-        website_input.delete(0, "end")
-        password_input.delete(0, "end")
-        website_input.focus()
+        finally:
+            website_input.delete(0, "end")
+            password_input.delete(0, "end")
+            website_input.focus()
 
 
 # ---------------------------- UI SETUP ------------------------------- #
