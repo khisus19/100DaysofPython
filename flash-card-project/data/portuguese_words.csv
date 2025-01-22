@@ -3,15 +3,15 @@ que,qué
 não,No
 o,el
 de,de
-a,el
-é,y
+a,la
+é,es
 você,tú
 e,y
-eu,I
+eu,yo
 um,uno
 para,a
 está,este
-uma,uno
+uma,una
 se,si
 com,con
 por,poner
@@ -23,49 +23,49 @@ me,a mí
 mas,pero
 como,como
 bem,bien
-da,desde
-no,nodo
-os,tú
+da,de la
+no,en el
+os,los
 ela,ella
-na,en
+na,en la
 sim,Sí
 aqui,aquí
 mais,más
-tem,él tiene
+tem,tiene
 meu,mi
 seu,su
 muito,muy
-foi,el era
-as,hacia
-vai,ir
+foi,fue
+as,las
+vai,va
 sua,su
-estou,Soy
+estou,estoy
 vamos,vamos
 tudo,todo
 minha,mi
 só,solo
 então,entonces
-pode,el puede
+pode,puede
 agora,ahora
-vou,Voy
+vou,voy
 ser,ser
 quando,cuando
 fazer,hacer
 sei,Sé
 eles,ellos
-nós,a nosotros
+nós,nosotros
 tenho,Tengo
 te,tú
-estava,el era
+estava,estaba
 certo,bien
-quer,el quiere
+quer,quiere
 sabe,el sabe
 já,ya
 era,era
 nos,a nosotros
-quem,OMS
+quem,quien
 ou,o
-ao,hacia
+ao,a el
 nada,nada
 disse,el dijo
 há,hay
@@ -75,7 +75,7 @@ quero,Quiero
 bom,bien
 ter,tener
 sou,soy
-são,ellos son
+são,son
 dizer,decir
 posso,puedo
 acho,Creo
@@ -85,18 +85,18 @@ porque,por qué
 mesmo,mismo
 coisa,cosa
 todos,todo
-estão,ellos son
+estão,están
 algo,algo
 até,hasta
 tempo,tiempo
-assim,como esto
+assim,así
 nunca,nunca
-vocês,tú
+vocês,ustedes
 esse,eso
 casa,hogar
 quê,qué
-essa,eso
-à,el
+essa,esa
+à,a la
 ver,ver
 também,también
 pra,para
@@ -485,7 +485,6 @@ lembra,recordar
 dessa,de esto
 morreu,el murio
 tomar,llevar
-the,el
 bastante,bastante
 neste,en esto
 maneira,manera
