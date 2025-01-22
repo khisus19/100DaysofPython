@@ -12,6 +12,13 @@ front_card = PhotoImage(file="./images/card_front.png")
 canvas.create_image(400, 273, image=front_card)
 canvas.grid(row=0, column=0, columnspan=2)
 
+# Card title
+card_title = canvas.create_text(400, 150, text="Portuguese", font=("Arial", 35, "italic"))
+
+# Card pt_word
+pt_word = canvas.create_text(400, 280, text="Palavra", font=("Arial", 60, "bold"))
+
+
 # Correct button
 right_img = PhotoImage(file="./images/right.png")
 right_btn = Button(image=right_img, highlightthickness=0)
