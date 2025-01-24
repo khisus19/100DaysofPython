@@ -5,16 +5,20 @@ import pandas as pd
 BACKGROUND_COLOR = "#B1DDC6"
 pt_word = ""
 sp_word = ""
+current_word_pair = []
 
 #####--------------------- Data -------------------------#####
 df = pd.read_csv("./data/portuguese_words.csv")
-pt_words_dict = df.to_dict("split")
+pt_words_dict = df.to_dict("records")
 
 
 def next_card():
-    new_word_pair = random.choice(pt_words_dict["data"])
-    global pt_word, sp_word, flip_timer
-    pt_word, sp_word = new_word_pair
+    global pt_word, sp_word, flip_timer, current_word_pair
+
+    # Fetching new word pair
+    current_word_pair = random.choice(pt_words_dict)
+    pt_word = current_word_pair["Portuguese"]
+    sp_word = current_word_pair["Spanish"]
 
     window.after_cancel(flip_timer)
 
@@ -23,12 +27,8 @@ def next_card():
     canvas.create_text(400, 150, text="Portuguese", font=("Arial", 35, "italic"), fill="black")
     canvas.create_text(400, 280, text=pt_word, font=("Arial", 60, "bold"), fill="black")
 
-    # Deactivate buttons
-    # right_btn.config(state=DISABLED)
-    # wrong_btn.config(state=DISABLED)
 
     flip_timer = window.after(3000, flip_card)
-    
     
 
 #####--------------------- Flip Card -------------------------#####
@@ -38,9 +38,15 @@ def flip_card():
     canvas.create_text(400, 150, text="Spanish", font=("Arial", 35, "italic"), fill="white")
     canvas.create_text(400, 280, text=sp_word, font=("Arial", 60, "bold"), fill="white")
 
-    # Deactivate buttons
-    right_btn.config(state=NORMAL)
-    wrong_btn.config(state=NORMAL)
+
+
+#####--------------------- Remove learned word -------------------------#####
+def remove_word():
+    global current_word_pair
+    pt_words_dict.remove(current_word_pair)
+    print(current_word_pair)
+    print(len(pt_words_dict))
+    next_card()
 
 
 #####--------------------- UI -------------------------#####
@@ -68,8 +74,9 @@ pt_word_canvas = canvas.create_text(400, 280, text="", font=("Arial", 60, "bold"
 
 # Correct button
 right_img = PhotoImage(file="./images/right.png")
-right_btn = Button(image=right_img, highlightthickness=0, command=next_card)
+right_btn = Button(image=right_img, highlightthickness=0, command=remove_word)
 right_btn.grid(row=1, column=0)
+
 
 
 # Incorrect button
