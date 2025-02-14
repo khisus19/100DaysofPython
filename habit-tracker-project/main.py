@@ -1,4 +1,4 @@
-import requests, os
+import requests, os, datetime
 
 PIXELA_ENDPOINT = "https://pixe.la/v1/users"
 USERNAME = "khisus19"
@@ -38,12 +38,32 @@ headers = {
 graphid = "graph1"
 my_graph_endpoint = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs/{graphid}"
 
+today = datetime.datetime.now()
+
 pixel_request_body = {
-    "date": "20250206",
-    "quantity": "14",
+    "date": today.strftime("%Y%m%d"),
+    "quantity": "12",
     "agreeTermsOfService": "yes",
     "notMinor": "yes"
 }
 
-response = requests.post(url=my_graph_endpoint, json=pixel_request_body, headers=headers)
-print(response.text)
+# response = requests.post(url=my_graph_endpoint, json=pixel_request_body, headers=headers)
+# print(response.text)
+
+##------------- Update a pixel (PUT REQUEST) -----------------##
+
+new_date = datetime.datetime(2025, 2, 8)
+
+
+update_pixel_request_body = {
+    "quantity": "12",
+    "agreeTermsOfService": "yes",
+    "notMinor": "yes"
+}
+
+# response = requests.put(url=f"{my_graph_endpoint}/{new_date.strftime("%Y%m%d")}", json=update_pixel_request_body, headers=headers)
+# print(response.text)
+
+
+##------------- Delete a pixel (DELETE REQUEST) -----------------##
+
