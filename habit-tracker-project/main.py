@@ -66,4 +66,10 @@ update_pixel_request_body = {
 
 
 ##------------- Delete a pixel (DELETE REQUEST) -----------------##
+# Same endpoin as PUT
+pixel_to_delete = datetime.datetime(2025, 2, 10)
 
+delete_endpoint = f"{my_graph_endpoint}/{pixel_to_delete.strftime("%Y%m%d")}"
+
+response = requests.delete(url=delete_endpoint, headers=headers)
+print(response.text)
